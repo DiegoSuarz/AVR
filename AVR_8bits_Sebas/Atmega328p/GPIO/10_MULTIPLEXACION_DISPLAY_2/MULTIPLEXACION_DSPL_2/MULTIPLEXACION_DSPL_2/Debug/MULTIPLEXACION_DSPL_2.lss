@@ -1,0 +1,430 @@
+
+MULTIPLEXACION_DSPL_2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  0000026e  00000302  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000026e  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  0080010c  0080010c  0000030e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000030e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000340  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000038  00000000  00000000  00000380  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000008ae  00000000  00000000  000003b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000726  00000000  00000000  00000c66  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000003b3  00000000  00000000  0000138c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000008c  00000000  00000000  00001740  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000048a  00000000  00000000  000017cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001fe  00000000  00000000  00001c56  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000028  00000000  00000000  00001e54  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee e6       	ldi	r30, 0x6E	; 110
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ac e0       	ldi	r26, 0x0C	; 12
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a0 31       	cpi	r26, 0x10	; 16
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 c7 00 	call	0x18e	; 0x18e <main>
+  9e:	0c 94 35 01 	jmp	0x26a	; 0x26a <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <_Z11multiplexarv>:
+	}
+}
+
+void multiplexar(){
+	
+	decenas = contador/10;
+  a6:	20 91 0f 01 	lds	r18, 0x010F	; 0x80010f <contador>
+  aa:	87 e6       	ldi	r24, 0x67	; 103
+  ac:	28 02       	muls	r18, r24
+  ae:	81 2d       	mov	r24, r1
+  b0:	11 24       	eor	r1, r1
+  b2:	85 95       	asr	r24
+  b4:	85 95       	asr	r24
+  b6:	27 fd       	sbrc	r18, 7
+  b8:	83 95       	inc	r24
+  ba:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <decenas>
+	residuo=contador%10;
+  be:	88 0f       	add	r24, r24
+  c0:	98 2f       	mov	r25, r24
+  c2:	99 0f       	add	r25, r25
+  c4:	99 0f       	add	r25, r25
+  c6:	89 0f       	add	r24, r25
+  c8:	92 2f       	mov	r25, r18
+  ca:	98 1b       	sub	r25, r24
+  cc:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <__data_end>
+	unidades = residuo;
+  d0:	90 93 0e 01 	sts	0x010E, r25	; 0x80010e <unidades>
+	
+	setTrasn1();
+  d4:	81 e0       	ldi	r24, 0x01	; 1
+  d6:	85 b9       	out	0x05, r24	; 5
+	PORTD = deco_ac[unidades];
+  d8:	e0 91 0e 01 	lds	r30, 0x010E	; 0x80010e <unidades>
+  dc:	0e 2e       	mov	r0, r30
+  de:	00 0c       	add	r0, r0
+  e0:	ff 0b       	sbc	r31, r31
+  e2:	ee 5f       	subi	r30, 0xFE	; 254
+  e4:	fe 4f       	sbci	r31, 0xFE	; 254
+  e6:	80 81       	ld	r24, Z
+  e8:	8b b9       	out	0x0b, r24	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ea:	8f e1       	ldi	r24, 0x1F	; 31
+  ec:	9e e4       	ldi	r25, 0x4E	; 78
+  ee:	01 97       	sbiw	r24, 0x01	; 1
+  f0:	f1 f7       	brne	.-4      	; 0xee <_Z11multiplexarv+0x48>
+  f2:	00 c0       	rjmp	.+0      	; 0xf4 <_Z11multiplexarv+0x4e>
+  f4:	00 00       	nop
+	_delay_ms(tiempo);
+	
+	setTrasn2();
+  f6:	82 e0       	ldi	r24, 0x02	; 2
+  f8:	85 b9       	out	0x05, r24	; 5
+	PORTD=deco_ac[decenas];
+  fa:	e0 91 0d 01 	lds	r30, 0x010D	; 0x80010d <decenas>
+  fe:	0e 2e       	mov	r0, r30
+ 100:	00 0c       	add	r0, r0
+ 102:	ff 0b       	sbc	r31, r31
+ 104:	ee 5f       	subi	r30, 0xFE	; 254
+ 106:	fe 4f       	sbci	r31, 0xFE	; 254
+ 108:	80 81       	ld	r24, Z
+ 10a:	8b b9       	out	0x0b, r24	; 11
+ 10c:	8f e1       	ldi	r24, 0x1F	; 31
+ 10e:	9e e4       	ldi	r25, 0x4E	; 78
+ 110:	01 97       	sbiw	r24, 0x01	; 1
+ 112:	f1 f7       	brne	.-4      	; 0x110 <_Z11multiplexarv+0x6a>
+ 114:	00 c0       	rjmp	.+0      	; 0x116 <_Z11multiplexarv+0x70>
+ 116:	00 00       	nop
+ 118:	08 95       	ret
+
+0000011a <_Z11repetir_incm>:
+	_delay_ms(tiempo);
+}
+
+void repetir_inc(uint32_t valor){
+ 11a:	cf 92       	push	r12
+ 11c:	df 92       	push	r13
+ 11e:	ef 92       	push	r14
+ 120:	ff 92       	push	r15
+ 122:	cf 93       	push	r28
+ 124:	6b 01       	movw	r12, r22
+ 126:	7c 01       	movw	r14, r24
+	
+	char i;
+	for(i=0;i<valor;i++){
+ 128:	c0 e0       	ldi	r28, 0x00	; 0
+ 12a:	8c 2f       	mov	r24, r28
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	a0 e0       	ldi	r26, 0x00	; 0
+ 130:	b0 e0       	ldi	r27, 0x00	; 0
+ 132:	8c 15       	cp	r24, r12
+ 134:	9d 05       	cpc	r25, r13
+ 136:	ae 05       	cpc	r26, r14
+ 138:	bf 05       	cpc	r27, r15
+ 13a:	30 f4       	brcc	.+12     	; 0x148 <_Z11repetir_incm+0x2e>
+		multiplexar();
+ 13c:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11multiplexarv>
+		if(getStatusB4() ==0) break;
+ 140:	1c 9b       	sbis	0x03, 4	; 3
+ 142:	02 c0       	rjmp	.+4      	; 0x148 <_Z11repetir_incm+0x2e>
+}
+
+void repetir_inc(uint32_t valor){
+	
+	char i;
+	for(i=0;i<valor;i++){
+ 144:	cf 5f       	subi	r28, 0xFF	; 255
+ 146:	f1 cf       	rjmp	.-30     	; 0x12a <_Z11repetir_incm+0x10>
+		multiplexar();
+		if(getStatusB4() ==0) break;
+		
+	}
+	return;
+}
+ 148:	cf 91       	pop	r28
+ 14a:	ff 90       	pop	r15
+ 14c:	ef 90       	pop	r14
+ 14e:	df 90       	pop	r13
+ 150:	cf 90       	pop	r12
+ 152:	08 95       	ret
+
+00000154 <_Z11repetir_decm>:
+
+void repetir_dec(uint32_t valor){
+ 154:	cf 92       	push	r12
+ 156:	df 92       	push	r13
+ 158:	ef 92       	push	r14
+ 15a:	ff 92       	push	r15
+ 15c:	cf 93       	push	r28
+ 15e:	6b 01       	movw	r12, r22
+ 160:	7c 01       	movw	r14, r24
+	char i;
+	for(i=0;i<valor;i++){
+ 162:	c0 e0       	ldi	r28, 0x00	; 0
+ 164:	8c 2f       	mov	r24, r28
+ 166:	90 e0       	ldi	r25, 0x00	; 0
+ 168:	a0 e0       	ldi	r26, 0x00	; 0
+ 16a:	b0 e0       	ldi	r27, 0x00	; 0
+ 16c:	8c 15       	cp	r24, r12
+ 16e:	9d 05       	cpc	r25, r13
+ 170:	ae 05       	cpc	r26, r14
+ 172:	bf 05       	cpc	r27, r15
+ 174:	30 f4       	brcc	.+12     	; 0x182 <_Z11repetir_decm+0x2e>
+		multiplexar();
+ 176:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11multiplexarv>
+		if(getStatusB5() ==0) break;
+ 17a:	1d 9b       	sbis	0x03, 5	; 3
+ 17c:	02 c0       	rjmp	.+4      	; 0x182 <_Z11repetir_decm+0x2e>
+	return;
+}
+
+void repetir_dec(uint32_t valor){
+	char i;
+	for(i=0;i<valor;i++){
+ 17e:	cf 5f       	subi	r28, 0xFF	; 255
+ 180:	f1 cf       	rjmp	.-30     	; 0x164 <_Z11repetir_decm+0x10>
+		multiplexar();
+		if(getStatusB5() ==0) break;
+	}
+	return;
+	
+ 182:	cf 91       	pop	r28
+ 184:	ff 90       	pop	r15
+ 186:	ef 90       	pop	r14
+ 188:	df 90       	pop	r13
+ 18a:	cf 90       	pop	r12
+ 18c:	08 95       	ret
+
+0000018e <main>:
+void repetir_dec(uint32_t valor);
+
+int main(void)
+{
+	/* Replace with your application code */
+	DDRD = 0XFF; //Todo el puerto D como salida digital
+ 18e:	8f ef       	ldi	r24, 0xFF	; 255
+ 190:	8a b9       	out	0x0a, r24	; 10
+	DDRB |= (1<<PINB0)|(1<<PINB1)|(1<<PINB2)|(1<<PINB3); //Pines B0,B1,B2,B3 como salida
+ 192:	84 b1       	in	r24, 0x04	; 4
+ 194:	8f 60       	ori	r24, 0x0F	; 15
+ 196:	84 b9       	out	0x04, r24	; 4
+	DDRB &= ~((1<<PINB4)|(1<<PINB5));  //PINES B4,B5 como entrada digital
+ 198:	84 b1       	in	r24, 0x04	; 4
+ 19a:	8f 7c       	andi	r24, 0xCF	; 207
+ 19c:	84 b9       	out	0x04, r24	; 4
+	
+	
+	while (1)
+	{
+		
+		if(getStatusB4() !=0){
+ 19e:	1c 9b       	sbis	0x03, 4	; 3
+ 1a0:	2f c0       	rjmp	.+94     	; 0x200 <main+0x72>
+			while(getStatusB4()!=0){
+ 1a2:	1c 9b       	sbis	0x03, 4	; 3
+ 1a4:	21 c0       	rjmp	.+66     	; 0x1e8 <main+0x5a>
+				repetir_inc(valor_tiempo);
+ 1a6:	60 91 00 01 	lds	r22, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1aa:	70 91 01 01 	lds	r23, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1ae:	07 2e       	mov	r0, r23
+ 1b0:	00 0c       	add	r0, r0
+ 1b2:	88 0b       	sbc	r24, r24
+ 1b4:	99 0b       	sbc	r25, r25
+ 1b6:	0e 94 8d 00 	call	0x11a	; 0x11a <_Z11repetir_incm>
+				valor_tiempo -= 5;
+ 1ba:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1be:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1c2:	05 97       	sbiw	r24, 0x05	; 5
+ 1c4:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1c8:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+				if(valor_tiempo<15) valor_tiempo=15;
+ 1cc:	0f 97       	sbiw	r24, 0x0f	; 15
+ 1ce:	34 f4       	brge	.+12     	; 0x1dc <main+0x4e>
+ 1d0:	8f e0       	ldi	r24, 0x0F	; 15
+ 1d2:	90 e0       	ldi	r25, 0x00	; 0
+ 1d4:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1d8:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+				contador++;
+ 1dc:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <contador>
+ 1e0:	8f 5f       	subi	r24, 0xFF	; 255
+ 1e2:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <contador>
+	
+	while (1)
+	{
+		
+		if(getStatusB4() !=0){
+			while(getStatusB4()!=0){
+ 1e6:	dd cf       	rjmp	.-70     	; 0x1a2 <main+0x14>
+				repetir_inc(valor_tiempo);
+				valor_tiempo -= 5;
+				if(valor_tiempo<15) valor_tiempo=15;
+				contador++;
+			}
+			valor_tiempo=50;
+ 1e8:	82 e3       	ldi	r24, 0x32	; 50
+ 1ea:	90 e0       	ldi	r25, 0x00	; 0
+ 1ec:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1f0:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+			
+			if(contador>99){
+ 1f4:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <contador>
+ 1f8:	84 36       	cpi	r24, 0x64	; 100
+ 1fa:	14 f0       	brlt	.+4      	; 0x200 <main+0x72>
+				contador=0;
+ 1fc:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <contador>
+			}
+		}
+		
+		if(getStatusB5() !=0){
+ 200:	1d 9b       	sbis	0x03, 5	; 3
+ 202:	30 c0       	rjmp	.+96     	; 0x264 <main+0xd6>
+			while(getStatusB5()!=0) {
+ 204:	1d 9b       	sbis	0x03, 5	; 3
+ 206:	21 c0       	rjmp	.+66     	; 0x24a <main+0xbc>
+				repetir_dec(valor_tiempo);
+ 208:	60 91 00 01 	lds	r22, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 20c:	70 91 01 01 	lds	r23, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 210:	07 2e       	mov	r0, r23
+ 212:	00 0c       	add	r0, r0
+ 214:	88 0b       	sbc	r24, r24
+ 216:	99 0b       	sbc	r25, r25
+ 218:	0e 94 aa 00 	call	0x154	; 0x154 <_Z11repetir_decm>
+				valor_tiempo -= 5;
+ 21c:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 220:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 224:	05 97       	sbiw	r24, 0x05	; 5
+ 226:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 22a:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+				if(valor_tiempo<15) valor_tiempo=15;
+ 22e:	0f 97       	sbiw	r24, 0x0f	; 15
+ 230:	34 f4       	brge	.+12     	; 0x23e <main+0xb0>
+ 232:	8f e0       	ldi	r24, 0x0F	; 15
+ 234:	90 e0       	ldi	r25, 0x00	; 0
+ 236:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 23a:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+				contador--;	
+ 23e:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <contador>
+ 242:	81 50       	subi	r24, 0x01	; 1
+ 244:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <contador>
+				contador=0;
+			}
+		}
+		
+		if(getStatusB5() !=0){
+			while(getStatusB5()!=0) {
+ 248:	dd cf       	rjmp	.-70     	; 0x204 <main+0x76>
+				valor_tiempo -= 5;
+				if(valor_tiempo<15) valor_tiempo=15;
+				contador--;	
+				
+			}
+			valor_tiempo=50;	
+ 24a:	82 e3       	ldi	r24, 0x32	; 50
+ 24c:	90 e0       	ldi	r25, 0x00	; 0
+ 24e:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 252:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+			
+			if(contador<0){
+ 256:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <contador>
+ 25a:	88 23       	and	r24, r24
+ 25c:	1c f4       	brge	.+6      	; 0x264 <main+0xd6>
+				contador=99;
+ 25e:	83 e6       	ldi	r24, 0x63	; 99
+ 260:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <contador>
+			}
+		}
+		
+		
+		multiplexar();
+ 264:	0e 94 53 00 	call	0xa6	; 0xa6 <_Z11multiplexarv>
+	DDRD = 0XFF; //Todo el puerto D como salida digital
+	DDRB |= (1<<PINB0)|(1<<PINB1)|(1<<PINB2)|(1<<PINB3); //Pines B0,B1,B2,B3 como salida
+	DDRB &= ~((1<<PINB4)|(1<<PINB5));  //PINES B4,B5 como entrada digital
+	
+	
+	while (1)
+ 268:	9a cf       	rjmp	.-204    	; 0x19e <main+0x10>
+
+0000026a <_exit>:
+ 26a:	f8 94       	cli
+
+0000026c <__stop_program>:
+ 26c:	ff cf       	rjmp	.-2      	; 0x26c <__stop_program>

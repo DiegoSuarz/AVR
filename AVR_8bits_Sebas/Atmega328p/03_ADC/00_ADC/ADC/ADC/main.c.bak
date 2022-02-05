@@ -22,8 +22,6 @@ int main(void)
 	/************************************************************************/
 	ADMUX &= ~(1<<ADLAR);   //justificacion a la derecha de los registros ADLH
 	
-		ADCSRA &= ~(1<<ADATE);	//Deshabilitar el autodisparo de conversion del ADC
-	
 	ADMUX &= ~(1<<REFS1);	//Seleccionanda el voltaje de referencia ( VREF=AVCC)
 	ADMUX |= (1<<REFS0);
 	
